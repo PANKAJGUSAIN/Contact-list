@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--link rel="stylesheet" type="css" href="/css/home.css"-->
+    <script src="https://kit.fontawesome.com/6d65aca24c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+
+    <title>
+        <%= title %>
+    </title>
+</head>
+<body>
+    <!--h1>render from ejs</h1-->
+        <h1 id="heading">
+        <i class="fas fa-address-book"></i>
+        Contact List
+        </h1>
+    <ul>
+        <%for(let i of contact_list){%>
+            <li class="list_items">
+                <div id="content">
+                    <p id="#name"><%= i.name %></p>
+                    <p id="#phone"><%= i.phone %></p>
+                </div>
+                <div id="delete-button">
+                    <a href="/delete-contact/?id=<%= i._id %>">
+                        <i class="fas fa-window-close"></i>
+                    </a>
+                </div>
+            </li>
+        <%}%>
+    </ul>
+
+    <form method="POST" action="/contact-list" >
+        <input type="text" name="name" placeholder="Enter Name" required>
+        <input type="text" name="Phone" placeholder="Enter number" required>
+        <button type="submit">Submit</button>
+    </form>
+    <script type="text/javascript" src="/js/home.js">
+    </script>
+</body>
+</html>
